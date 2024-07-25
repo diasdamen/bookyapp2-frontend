@@ -3,8 +3,9 @@ import Link from "next/link";
 import { format } from "date-fns";
 
 const getUserReservations = async (userEmail: any) => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(
-    `http://127.0.0.1:1337/api/reservations?[filters][email][$eq]=${userEmail}&populate=*`, 
+    `${apiUrl}/api/reservations?[filters][email][$eq]=${userEmail}&populate=*`, 
     {
       next: {
         revalidate: 0
